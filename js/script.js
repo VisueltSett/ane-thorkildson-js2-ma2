@@ -1,45 +1,21 @@
-// import {createBookList} from './components/createBookList.js';
-// import deleteButton from './components/deleteButton.js';
+import {createBookList} from './components/createBookList.js';
 import {books} from "./data/books.js";
 
-function createBookList() {
-    const bookList = document.querySelector("ul")
 
-    bookList.innerHTML = "";
-
-    books.forEach(function (book) {
-
-    let bookTitle = "Unknown title";
-    let bookIsbn = "Unknown";
-
-    if(book.title){
-        bookTitle = book.title;
-    }
-    if (book.isbn){
-        bookIsbn = book.isbn;
-    }
-
-    bookList.innerHTML += `<li>
-                                <div>Title: <span><h3> ${bookTitle}</h3></span></div>
-                                <p>ISBN: <span>${bookIsbn}</span></p>
-                                <i class="far fa-trash-alt" data-book="${book}"></i>
-                            </li>`;
-    });
-
-    const deleteButtons = document.querySelectorAll("li i");
-
-    deleteButtons.forEach(function (deleteBtn) {
-        deleteBtn.addEventListener("click", deleteBook);
-    });
-
-}
 createBookList();
 
-    function deleteBook(){
+const deleteButtons = document.querySelectorAll("li i");
 
-    const deleteThisBook = this.dataset.book;
+deleteButtons.forEach(function (deleteBtn) {
+    deleteBtn.addEventListener("click", bookToDelete);
+});
 
-    const newBookList = books.filter(function(bookToBeDeleted){
+
+    function bookToDelete(){
+
+    const deleteThisBook = event.target.dataset.book;
+
+    const newBookList = books.filter(function (bookToBeDeleted){
         if(deleteThisBook !== bookToBeDeleted){
             return true;
         }
@@ -49,7 +25,12 @@ createBookList();
 
     createBookList();
 
+    if (!newBookList.length) {
+        booklist.innerHTML = "There are no more books in the list"
     }
+
+}
+
 
 
 

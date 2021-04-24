@@ -1,35 +1,28 @@
-// import {books} from "../data/books.js";
-// import deleteButton from "./deleteButton.js";
+import {books} from "../data/books.js";
 
 
-// export function createBookList() {
-//     const booksList = document.querySelector("ul")
+export function createBookList() {
+    const bookList = document.querySelector("ul")
 
-//     booksList.innerHTML = "";
+    bookList.innerHTML = "";
 
-//     books.forEach(function (book) {
+    books.forEach(function (book) {
 
-//     let bookTitle = "Unknown title";
-//     let bookIsbn = "Unknown";
+    let bookTitle = "Unknown title";
+    let bookIsbn = "Unknown";
 
-//     if(book.title){
-//         bookTitle = book.title;
-//     }
-//     if (book.isbn){
-//         bookIsbn = book.isbn;
-//     }
+    if(book.title){
+        bookTitle = book.title;
+    }
+    if (book.isbn){
+        bookIsbn = book.isbn;
+    }
 
-//     booksList.innerHTML += `<li>
-//                                 <div>Title: <span><h3> ${bookTitle}</h3></span></div>
-//                                 <p>ISBN: <span>${bookIsbn}</span></p>
-//                                 <i class="far fa-trash-alt" data-book="${book}"></i>
-//                             </li>`;
-//     });
+    bookList.innerHTML += `<li>
+                                <div>Title: <span><h3> ${bookTitle}</h3></span></div>
+                                <p>ISBN: <span>${bookIsbn}</span></p>
+                                <i class="far fa-trash-alt" data-item="${book}"></i>
+                            </li>`;
+    });
 
-//     const deleteBtn = document.querySelectorAll("li i");
-
-//     deleteBtn.forEach(function(trashCan) {
-//         trashCan.addEventListener("click", deleteBook);
-//     });
-
-// }
+}
